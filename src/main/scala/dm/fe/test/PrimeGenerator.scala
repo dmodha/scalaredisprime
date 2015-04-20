@@ -28,4 +28,14 @@ class PrimeGenerator(maxNumber: Int = 100, redisHost: String = "127.0.0.1", redi
     (start to end) foreach((i : Int) => if ( redisServer.sismember(key, i) ) {lst = lst :+ i} )
     lst.toList
   }
+  def sumList(lst: List[Int]):Int ={
+    var sum = 0;
+    lst foreach(i=>sum += i)
+    sum
+  }
+  def meanList(lst: List[Int]):Float = {
+    val sum = sumList(lst)
+    val mean = (sum * 1.0f)/ lst.length
+    return mean
+  }
 }

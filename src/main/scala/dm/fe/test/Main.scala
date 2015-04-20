@@ -19,8 +19,11 @@ object Main {
       val upperBound = scala.io.StdIn.readInt();
       println("Result:");
       try {
-        val primeNumbers = primes.getCachedPrimes(lowerBound, upperBound).mkString( ",")
+        val primeNumbersList = primes.getCachedPrimes(lowerBound, upperBound)
+        val primeNumbers = primeNumbersList.mkString( ",")
         println("Primes numbers: [" + primeNumbers +"]")
+        println("Sum: " + primes.sumList(primeNumbersList))
+        println("Mean: " + primes.meanList(primeNumbersList))
         println("Enter Y to get another range? ")
         val char = scala.io.StdIn.readChar()
 

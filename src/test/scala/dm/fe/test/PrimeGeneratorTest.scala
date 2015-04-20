@@ -8,16 +8,15 @@ import org.junit.Assert._
  */
 class PrimeGeneratorTest {
 
+  val primesTo100 = List(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97)
+  val pg = new PrimeGenerator(100,null,0)
   @Test
   def generatePrimeTest (): Unit = {
-    val pg = new PrimeGenerator(100,null,0)
     val primes = pg.generatePrimes(100)
-    val primesTo100 = List(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97)
     assertEquals(primesTo100,primes)
   }
   @Test
-  def getCachedPrimes() :Unit= {
-    val pg = new PrimeGenerator(100,null,0)
+  def getCachedPrimesTest() :Unit= {
     try {
       pg.getCachedPrimes(101, 10)
       fail("bad validation: start > end")
@@ -30,5 +29,11 @@ class PrimeGeneratorTest {
     } catch {
       case ex:Exception => {}
     }
+  }
+  @Test def sumAndMeanListTest(): Unit = {
+    val sum = pg.sumList(List(1,2,3))
+    assertEquals(6,sum)
+    val mean = pg.meanList(List(5,10,15))
+    assertEquals(10,mean)
   }
 }
